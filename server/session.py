@@ -12,7 +12,7 @@ import itertools
 import time
 from functools import partial
 
-from aiorpcx import ServerSession, JSONRPCAutoDetect, RPCError
+from aiorpcx import RPCSession, JSONRPCAutoDetect, RPCError
 
 from lib.hash import sha256, hash_to_str
 import lib.util as util
@@ -38,7 +38,7 @@ class Semaphores(object):
             semaphore.release()
 
 
-class SessionBase(ServerSession):
+class SessionBase(RPCSession):
     '''Base class of ElectrumX JSON sessions.
 
     Each session runs its tasks in asynchronous parallelism with other
